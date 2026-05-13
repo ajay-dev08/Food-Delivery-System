@@ -1,0 +1,339 @@
+<!-- FULL UPDATED index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FoodExpress - Food Delivery</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/4c8e1f4c2d.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      <i class="fa-solid fa-burger"></i>
+      FoodExpress
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#foods">Foods</a></li>
+      <li><a href="#offers">Offers</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="cart-icon" onclick="openCart()">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span id="cart-count">0</span>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <h1>
+        Delicious Food <br>
+        Delivered Fast
+      </h1>
+
+      <p>
+        Order your favorite meals anytime anywhere.
+      </p>
+
+      <button onclick="scrollFoods()">
+        Order Now
+      </button>
+
+    </div>
+
+    <div class="hero-image">
+
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+  <!-- SEARCH -->
+
+  <section class="search-section">
+
+    <input type="text" id="searchInput" placeholder="Search food..." onkeyup="searchFood()">
+
+  </section>
+
+  <!-- FOODS -->
+
+  <section class="foods" id="foods">
+
+    <div class="food-card">
+
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop">
+
+      <h3>Cheese Pizza</h3>
+
+      <p>₹299</p>
+
+      <button onclick="addToCart('Cheese Pizza',299)">
+        Add to Cart
+      </button>
+
+    </div>
+
+    <div class="food-card">
+
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop">
+
+      <h3>Burger</h3>
+
+      <p>₹199</p>
+
+      <button onclick="addToCart('Burger',199)">
+        Add to Cart
+      </button>
+
+    </div>
+
+    <div class="food-card">
+
+      <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200&auto=format&fit=crop">
+
+      <h3>Fried Chicken</h3>
+
+      <p>₹349</p>
+
+      <button onclick="addToCart('Fried Chicken',349)">
+        Add to Cart
+      </button>
+
+    </div>
+
+    <div class="food-card">
+
+      <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1200&auto=format&fit=crop">
+
+      <h3>Pasta</h3>
+
+      <p>₹249</p>
+
+      <button onclick="addToCart('Pasta',249)">
+        Add to Cart
+      </button>
+
+    </div>
+
+    <div class="food-card">
+
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1200&auto=format&fit=crop">
+
+      <h3>Healthy Salad</h3>
+
+      <p>₹179</p>
+
+      <button onclick="addToCart('Healthy Salad',179)">
+        Add to Cart
+      </button>
+
+    </div>
+
+    <div class="food-card">
+
+      <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=1200&auto=format&fit=crop">
+
+      <h3>Ice Cream</h3>
+
+      <p>₹149</p>
+
+      <button onclick="addToCart('Ice Cream',149)">
+        Add to Cart
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- OFFERS -->
+
+  <section class="offers" id="offers">
+
+    <h2>Special Offers</h2>
+
+    <div class="offer-container">
+
+      <div class="offer-box">
+        <i class="fa-solid fa-percent"></i>
+        <h3>50% OFF</h3>
+        <p>On your first order</p>
+      </div>
+
+      <div class="offer-box">
+        <i class="fa-solid fa-truck"></i>
+        <h3>Free Delivery</h3>
+        <p>Orders above ₹499</p>
+      </div>
+
+      <div class="offer-box">
+        <i class="fa-solid fa-gift"></i>
+        <h3>Combo Deals</h3>
+        <p>Save more every day</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CART -->
+
+  <div class="cart-sidebar" id="cart">
+
+    <div class="cart-header">
+
+      <h2>Your Cart</h2>
+
+      <i class="fa-solid fa-xmark" onclick="closeCart()"></i>
+
+    </div>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-footer">
+
+      <h3>
+        Total: ₹<span id="total">0</span>
+      </h3>
+
+      <button class="checkout-btn" onclick="checkout()">
+        Checkout
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- PAYMENT MODAL -->
+
+  <div class="payment-modal" id="paymentModal">
+
+    <div class="payment-box">
+
+      <div class="payment-header">
+
+        <h2>Payment Details</h2>
+
+        <i class="fa-solid fa-xmark" onclick="closePayment()"></i>
+
+      </div>
+
+      <form id="paymentForm">
+
+        <div class="input-group">
+
+          <label>Full Name</label>
+
+          <input type="text" placeholder="Enter your name" required>
+
+        </div>
+
+        <div class="input-group">
+
+          <label>Card Number</label>
+
+          <input type="text" maxlength="16" placeholder="1234567890123456" required>
+
+        </div>
+
+        <div class="payment-row">
+
+          <div class="input-group">
+
+            <label>Expiry Date</label>
+
+            <input type="text" placeholder="MM/YY" required>
+
+          </div>
+
+          <div class="input-group">
+
+            <label>CVV</label>
+
+            <input type="password" maxlength="3" placeholder="123" required>
+
+          </div>
+
+        </div>
+
+        <div class="input-group">
+
+          <label>Delivery Address</label>
+
+          <textarea placeholder="Enter your address" required></textarea>
+
+        </div>
+
+        <div class="payment-total">
+
+          <h3>Total Amount</h3>
+
+          <h2>
+            ₹<span id="paymentTotal">0</span>
+          </h2>
+
+        </div>
+
+        <button type="submit" class="pay-btn">
+          Pay Now
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer id="contact">
+
+    <h2>FoodExpress</h2>
+
+    <p>
+      Fast Delivery | Fresh Food | Best Taste
+    </p>
+
+    <div class="social-icons">
+
+      <i class="fa-brands fa-facebook"></i>
+
+      <i class="fa-brands fa-instagram"></i>
+
+      <i class="fa-brands fa-twitter"></i>
+
+    </div>
+
+    <p class="copy">
+      © 2026 FoodExpress. All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
